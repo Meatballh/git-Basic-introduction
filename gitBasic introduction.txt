@@ -1,0 +1,148 @@
+git:  版本控制软件
+分布式版本控制软件
+
+
+命令：
+git  add：将本地文件 增加到暂存区
+git  commit：将暂存区的内容 提交到 本地仓库 （本地分支，默认master分支）
+git push：将本地仓库的内容 推送到    远程仓库（远程分支）
+
+git pull:  将远程仓库（远程分支）的内容  拉取到  本地仓库（本地分支）
+
+
+安装git
+msysgit.github.io
+
+安装时：   Use git  from git  bash only...,  其他默认下一步
+配置path： D:\git\Git\bin
+配置git： 用户名和邮箱
+右键-git bash
+git config --global user.name "lcm"
+git config --global user.email "1281278919@qq.com"
+
+查看：C:\Users\86151\.gitconfig
+
+搭建git服务器（远程仓库）:  统一的托管网站
+
+为了  在本地和远程仓库进行   免密钥登录，可以配置ssh
+
+
+ssh：本地---远程关联
+配置ssh：先在本地配置，发送给远程
+
+先在本地生产ssh：
+ ssh-keygen -t rsa -C 1281278919@qq.com    一直回车
+发送给远程：
+github - settings  -SSH  and.....   - New  SSh  -title任意 、key中输入 刚才在本地生成的ssh：
+将本地刚才生成的id_rsa.pub内容复制到远程的Key中
+
+
+测试连通性：
+ssh -T git@github.com
+
+如果本地和远程成功通信，则可以在C:\Users\86151\.ssh目录中  发现known_hosts文件
+如果失败：多试几次、  检查回车符
+
+
+在本地新建git项目
+在项目根目录  右键-  git bash Here -git init
+
+在远程建立git项目
+new-新建项目-生成   git@github.com:Meatballh/mygitremove.git
+
+
+本地项目----远程项目关联
+git remote add origin git@github.com:Meatballh/mygitremove.git
+
+
+
+第一次发布项目（本地-远程）
+git add .       //文件到暂存区
+git commit -m "注释内容"   //暂存区到本地分支（默认master）
+git push -u origin master
+
+第一次下载项目（远程-本地）
+git clone git@github.com:Meatballh/mygitremove.git
+
+
+提交（本地-远程）
+(在当前工作目录  右键-git bash)
+git add .
+git commit -m "提交到分支"
+git push origin master
+
+更新（远程-本地）git
+git pull
+
+Egit:  在Eclipse中操作git
+目前的eclipse基本都支持git，如果不支持  则到eclipse  marktplace 搜git安装
+配置：
+a.    team-git-configuration  -邮箱 用户名
+b.    general  -network  -ssh2选中  生成的ssh目录
+
+
+第一次发布
+share project
+加入暂存区add to index
+提交到本地分支commit
+将项目推送到远程     右键-team  -remote   -push ----
+
+
+提交
+team-  add  to   index
+team  -commit
+team  -push
+
+
+commit时:
+commit   and   push  或 commit按钮的区别：
+commit按钮：   不能单独的Push某一个文件，只能Push整个项目
+commit   and  push:   可以  单独Push某一个文件
+
+第一次下载
+import   -clone   -输入  https/ssh的唯一标识符
+
+更新
+team -pull
+
+
+git冲突的解决：
+发现冲突：         进入同步视图      右键--team---synchronized....
+解决：
+	添加到本地暂存区   add  to index
+	提交到本地分支   commit
+	更新服务端的分支内容  到本地分支   pull
+	修改冲突： 直接修改  或者  merge  tool
+				（--->已经变为了普通本地文件）
+	add   to  index
+	commit  push
+
+
+git多个人   团队协作开发
+
+github中  该项目 -settings
+增加合作者：Manage access  加入  合作者：github  全名或邮箱
+
+发生邀请链接
+
+合作伙伴：打开该链接、接受邀请：合作开发....clone项目、修改、add\commit\push
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
